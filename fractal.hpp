@@ -4,7 +4,7 @@
 
 class Fractal {
 
-private:
+protected:
 
 public:
     Fractal();

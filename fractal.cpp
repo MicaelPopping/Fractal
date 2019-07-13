@@ -2,7 +2,7 @@
 #include <fstream>
 #include <string>
 #include <cmath>
-#include "fractal.h"
+#include "fractal.hpp"
 #include <omp.h>
 
 using namespace std;
@@ -54,6 +54,7 @@ int Fractal::gerarFractal(double cr, double ci, int max_iterations, double Numbe
 		zr = zr * zr - zi * zi + NumberR;
 		zi = temp + NumberI;
 	}
+	
 	return i;
 }
 
