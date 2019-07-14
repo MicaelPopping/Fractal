@@ -26,7 +26,8 @@ void Julia::generate_image() {
 	for(int y = 0; y < image_height; ++y) {
 		for(int x = 0; x < image_width; ++x) {
 
-			int n = generate(x, y, -0.70176, -0.3842);
+			//int n = generate(x, y, -0.70176, -0.3842);
+            int n = generate(x, y, -0.8, 0.156);
 
 			int r = (n  % color_r); // CORES
 			int g = (n * 3 % color_g);
