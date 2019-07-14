@@ -13,11 +13,5 @@ int main (int argc, char *argv[]) {
 
     delete fc;
 
-    fc = new Mandelbrot(atoi(argv[1]));
-
-    fc->generate_image();
-
-    delete fc;
-
     return 0;
 }

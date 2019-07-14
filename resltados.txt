@@ -1,0 +1,51 @@
+Num Threads
+Dados
+
+JULIA
+
+1
+real	0m0,319s
+user	0m0,313s
+sys	0m0,005s
+
+2
+real	0m0,390s
+user	0m0,428s
+sys	0m0,028s
+
+4
+real	0m0,234s
+user	0m0,327s
+sys	0m0,012s
+
+8
+real	0m0,226s
+user	0m0,341s
+sys	0m0,016s
+
+
+16
+real	0m0,265s
+user	0m0,373s
+sys	0m0,013s
+
+32
+real	0m0,215s
+user	0m0,329s
+sys	0m0,008s
+
+64
+real	0m0,333s
+user	0m0,445s
+sys	0m0,020s
+
+128
+real	0m0,283s
+user	0m0,391s
+sys	0m0,016s
+
+-------------------------------------------------------------------------------------
+
+MANDELBROT
+
+1
