@@ -12,6 +12,9 @@ using std::ifstream;
 #include "fractal.hpp"
 
 
+/*************************************
+ * Public
+ * */
 Fractal::Fractal() {
 	
 	ifstream fin(input_file);
@@ -23,7 +26,7 @@ Fractal::Fractal() {
 
 	//Manipulando a entrada de dados
 	fin >> image_width >> image_height >> max_iterations;
-	fin >> min_r >> max_r >> min_i >> max_i;
+	fin >> min_real >> max_real >> min_imaginary >> max_imaginary;
 	fin >> color_r >> color_g >> color_b;
 	fin >> fractal_model; 
 
@@ -36,20 +39,14 @@ Fractal::Fractal() {
 	}
 }
 
-double Fractal::mapToReal(int x) {
-	double range = maxR - minR;
-	return x * (range / imageWidth) + minR;
-}
 
-double Fractal::mapToImaginary(int y) {
-	double range = maxI - minI;
-	return y * (range / imageHeight) + minI;
-}
-
-int Fractal::gerarFractal(double cr, double ci, int max_iterations, double NumberR, double NumberI) {
+/*************************************
+ * Protected
+ * */
+int Fractal::generate(double cr, double ci, int max_iterations, double NumberR, double NumberI) {
 	
 	int i;
-	int threads = atoi(argv[4]);
+	//int threads = atoi(argv[4]);
 	double zr = cr;
 	double zi = ci;
 	
@@ -65,6 +62,27 @@ int Fractal::gerarFractal(double cr, double ci, int max_iterations, double Numbe
 	
 	return i;
 }
+/*************************************
+ * Private
+ * */
+double Fractal::map_To_Real(int x) {
+
+	double range = max_real - min_real;
+
+	return x * (range / image_width) + min_real;
+}
+
+
+double Fractal::map_To_Imaginary(int y) {
+
+	double range = max_imaginary - min_imaginary;
+
+	return y * (range / image_height) + min_imaginary;
+}
+
+
+
+
 
 ImageTwo::ImageTwo() {
 	
