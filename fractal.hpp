@@ -27,9 +27,8 @@ public:
 	virtual void generate_image() = 0;
 
 protected:
-	int generate(double cr, double ci, int max_iterations, double NumberR, double NumberI);
+	int generate(int x, int i, double num_real, double num_imaginary);
 
-private:
 	double map_To_Real(int x);
 	double map_To_Imaginary(int y);
 };

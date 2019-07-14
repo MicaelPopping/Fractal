@@ -4,8 +4,6 @@ using std::cin;
 using std::endl;
 #include <fstream>
 using std::ifstream;
-#include <string>
-#include <cmath>
 #include <omp.h>
 
 
@@ -43,25 +41,28 @@ Fractal::Fractal() {
 /*************************************
  * Protected
  * */
-int Fractal::generate(double cr, double ci, int max_iterations, double NumberR, double NumberI) {
+int Fractal::generate(int x, int y, double num_real, double num_imaginary) {
 	
 	int i;
 	//int threads = atoi(argv[4]);
-	double zr = cr;
-	double zi = ci;
+	double cr = map_To_Real(x);
+	double ci = map_To_Imaginary(y);
 	
 	# pragma omp parallel num_threads (threads)  \
 		private (i);
 	
 	# pragma omp for
-	for(i=0;i < max_iterations && zr * zr + zi * zi < 4.0;i++) {
-	double temp = 2.0 * zr * zi;
-		zr = zr * zr - zi * zi + NumberR;
-		zi = temp + NumberI;
+	for(i=0; i < max_iterations && cr * cr + ci * ci < 4.0; i++) {
+
+		double temp = 2.0 * cr * ci;
+		cr = cr * cr - ci * ci + num_real;
+		ci = temp + num_imaginary;
 	}
 	
 	return i;
 }
+
+
 /*************************************
  * Private
  * */
@@ -78,65 +79,4 @@ double Fractal::map_To_Imaginary(int y) {
 	double range = max_imaginary - min_imaginary;
 
 	return y * (range / image_height) + min_imaginary;
-}
-
-
-
-
-
-ImageTwo::ImageTwo() {
-	
-	if(fractalModel == "Two") {
-		ofstream fout("Two.ppm");
-		fout << "P3" << endl; // Magic Number extensão ppm
-		fout << imageWidth << " " << imageHeight << endl;
-		fout << "256" << endl; // Valor máximo de cor do pixel RGB
-		
-		for(int y = 0; y < imageWidth; ++y) {
-			for(int x = 0; x < imageHeight; ++x) {
-				double cr = mapToReal(x);
-				double ci = mapToImaginary(y);
-				double NumberR = cr;
-				double NumberI = ci;
-				int n = gerarFractal(cr, ci, maxN, NumberR, NumberI);
-
-				int r = (n  % ColorR); // CORES
-				int g = (n * 3 % ColorG);
-				int b = (n % ColorB);
-
-				fout << r << " " << g << " " << b << " ";
-			}
-				fout << endl;
-		}
-				fout.close();
-				cout << "Terminado! " << fractalModel << " gerado com sucesso!" << endl;
-	}
-}
-
-ImageOne::ImageOne() {
-	
-	if(fractalModel == "One") {
-		ofstream fout("One.ppm");
-		fout << "P3" << endl; // Magic Number extensão ppm
-		fout << imageWidth << " " << imageHeight << endl;
-		fout << "256" << endl; // Valor máximo de cor do pixel RGB
-		for(int y = 0; y < imageHeight; ++y) {
-			for(int x = 0; x < imageWidth; ++x) {
-				double cr = mapToReal(x);
-				double ci = mapToImaginary(y);
-				double NumberR = -0.70176;
-				double NumberI = -0.3842;
-				int n = gerarFractal(cr, ci, maxN, NumberR, NumberI);
-
-				int r = (n  % ColorR); // CORES
-				int g = (n * 3 % ColorG);
-				int b = (n % ColorB);
-
-				fout << r << " " << g << " " << b << " ";
-			}
-				fout << endl;
-		}
-				fout.close();
-				cout << "Terminado! " << fractalModel << " gerado com sucesso!" << endl;
-	}
 }
