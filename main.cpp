@@ -5,15 +5,15 @@
 #include "mandelbrot.hpp"
 
 
-int main () {
+int main (int argc, char *argv[]) {
 
-    Fractal *fc = new Julia();
+    Fractal *fc = new Julia(atoi(argv[1]));
 
     fc->generate_image();
 
     delete fc;
 
-    fc = new Mandelbrot();
+    fc = new Mandelbrot(atoi(argv[1]));
 
     fc->generate_image();
 

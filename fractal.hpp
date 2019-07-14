@@ -20,10 +20,11 @@ protected:
 	double max_real;
 	double min_imaginary;
 	double max_imaginary;
-    int threads;
+    unsigned int threads;
+	int control;
 
 public:
-    Fractal(string input_file);
+    Fractal(string input_file, unsigned int threads);
 
 	virtual void generate_image() = 0;
 
@@ -34,7 +35,7 @@ protected:
 	double map_To_Imaginary(int y);
 
 private:
-	bool verify(int i, double expression);
+	void verify(int i, double expression);
 };
 
 #endif //FRACTAL_HPP

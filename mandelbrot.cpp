@@ -11,8 +11,8 @@ using std::ofstream;
 /*************************************
  * Public
  * */
-Mandelbrot::Mandelbrot() 
-: Fractal("input_mandelbrot.txt") { }
+Mandelbrot::Mandelbrot(unsigned int threads) 
+: Fractal("input_mandelbrot.txt", threads) { }
 
 
 void Mandelbrot::generate_image() {

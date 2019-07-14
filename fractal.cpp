@@ -13,8 +13,8 @@ using std::ifstream;
 /*************************************
  * Public
  * */
-Fractal::Fractal(string input_file) 
-: input_file(input_file) {
+Fractal::Fractal(string input_file, unsigned int threads) 
+: input_file(input_file), threads(threads) {
 	
 	ifstream fin(input_file);
 
@@ -48,16 +48,19 @@ int Fractal::generate(int x, int y, double num_real, double num_imaginary) {
 	double cr = map_To_Real(x);
 	double ci = map_To_Imaginary(y);
 
-	//inicia vrify
+	verify(i, (cr * cr + ci * ci));
 
 	# pragma omp parallel num_threads (threads)  \
 		private (i)
 	{
 		# pragma omp for	
-		for(i = 0; (i < max_iterations) && ((cr * cr + ci * ci) < 4.0); i++) {
+		for(i = 0; i < control; i++) {
+
 			double temp = 2.0 * cr * ci;
 			cr = cr * cr - ci * ci + num_real;
 			ci = temp + num_imaginary;
+
+			verify((i+1), (cr * cr + ci * ci));
 		}
 	}
 
@@ -84,10 +87,10 @@ double Fractal::map_To_Imaginary(int y) {
 /*************************************
  * Private
  * */
-bool Fractal::verify(int i, double expression) {
+void Fractal::verify(int i, double expression) {
 
 	if(i < max_iterations && expression < 4.0)
-		return true;
-
-	return false;
+		control = max_iterations;
+	else
+		control = 0;
 }
