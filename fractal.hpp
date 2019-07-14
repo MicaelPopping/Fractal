@@ -21,7 +21,6 @@ protected:
 	double min_imaginary;
 	double max_imaginary;
     unsigned int threads;
-	int control;
 
 public:
     Fractal(string input_file, unsigned int threads);
@@ -33,9 +32,6 @@ protected:
 
 	double map_To_Real(int x);
 	double map_To_Imaginary(int y);
-
-private:
-	void verify(int i, double expression);
 };
 
 #endif //FRACTAL_HPP

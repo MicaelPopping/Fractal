@@ -48,22 +48,12 @@ int Fractal::generate(int x, int y, double num_real, double num_imaginary) {
 	double cr = map_To_Real(x);
 	double ci = map_To_Imaginary(y);
 
-	verify(i, (cr * cr + ci * ci));
+	for(i = 0; i < max_iterations && (cr * cr + ci * ci) < 4.0; i++) {
 
-	# pragma omp parallel num_threads (threads)  \
-		private (i)
-	{
-		# pragma omp for	
-		for(i = 0; i < control; i++) {
-
-			double temp = 2.0 * cr * ci;
-			cr = cr * cr - ci * ci + num_real;
-			ci = temp + num_imaginary;
-
-			verify((i+1), (cr * cr + ci * ci));
-		}
+		double temp = 2.0 * cr * ci;
+		cr = cr * cr - ci * ci + num_real;
+		ci = temp + num_imaginary;
 	}
-
 
 	return i;
 }
@@ -81,16 +71,4 @@ double Fractal::map_To_Imaginary(int y) {
 	double range = max_imaginary - min_imaginary;
 
 	return y * (range / image_height) + min_imaginary;
-}
-
-
-/*************************************
- * Private
- * */
-void Fractal::verify(int i, double expression) {
-
-	if(i < max_iterations && expression < 4.0)
-		control = max_iterations;
-	else
-		control = 0;
 }
