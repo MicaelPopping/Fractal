@@ -31,6 +31,9 @@ protected:
 
 	double map_To_Real(int x);
 	double map_To_Imaginary(int y);
+
+private:
+	bool verify(int i, double expression);
 };
 
 #endif //FRACTAL_HPP
