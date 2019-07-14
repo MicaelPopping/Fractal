@@ -9,8 +9,10 @@ using std::string;
 class Fractal {
 
 protected:
-	string const input_file = "input.txt";
-	int image_width, image_height, max_iterations;
+	string const input_file;
+	int image_width;
+	int image_height;
+	int max_iterations;
 	int color_r;
 	int color_g;
 	int color_b;
@@ -21,7 +23,7 @@ protected:
     int threads;
 
 public:
-    Fractal(string fractal_model);
+    Fractal(string input_file);
 
 	virtual void generate_image() = 0;
 

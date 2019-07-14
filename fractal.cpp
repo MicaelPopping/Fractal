@@ -13,7 +13,8 @@ using std::ifstream;
 /*************************************
  * Public
  * */
-Fractal::Fractal(string fractal_model) {
+Fractal::Fractal(string input_file) 
+: input_file(input_file) {
 	
 	ifstream fin(input_file);
 

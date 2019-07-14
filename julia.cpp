@@ -12,7 +12,7 @@ using std::ofstream;
  * Public
  * */
 Julia::Julia() 
-: Fractal("julia") { }
+: Fractal("input_julia.txt") { }
 
 
 void Julia::generate_image() {

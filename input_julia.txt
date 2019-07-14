@@ -1,0 +1,14 @@
+1000 1000 1000 -2.0 2.0 -2.0 2.0 20 20 20
+imgW imgH mxIt  mnR mxR  mnI mxI R   G  B
+
+
+
+/* Outros Modelos de Julia */
+
+NumberR = -0.8;
+NumberI = 0.156;
+
+NumberR = -0.835
+NumberI = -0.2321
+
+50 205 50

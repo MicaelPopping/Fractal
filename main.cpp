@@ -11,5 +11,13 @@ int main () {
 
     fc->generate_image();
 
+    delete fc;
+
+    fc = new Mandelbrot();
+
+    fc->generate_image();
+
+    delete fc;
+
     return 0;
 }
