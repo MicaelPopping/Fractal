@@ -12,7 +12,7 @@ using std::ofstream;
  * Public
  * */
 Julia::Julia() 
-: Fractal() { }
+: Fractal("julia") { }
 
 
 void Julia::generate_image() {
@@ -31,11 +31,11 @@ void Julia::generate_image() {
 			int r = (n  % color_r); // CORES
 			int g = (n * 3 % color_g);
 			int b = (n % color_b);
-            
+
 			fout << r << " " << g << " " << b << " ";
 		}
 			fout << endl;
 	}
 			fout.close();
-			cout << "Terminado! " << fractal_model << " gerado com sucesso!" << endl;
+			cout << "Terminado! Julia gerado com sucesso!" << endl;
 }

@@ -10,7 +10,6 @@ class Fractal {
 
 protected:
 	string const input_file = "input.txt";
-	string fractal_model;
 	int image_width, image_height, max_iterations;
 	int color_r;
 	int color_g;
@@ -22,7 +21,7 @@ protected:
     int threads;
 
 public:
-    Fractal();
+    Fractal(string fractal_model);
 
 	virtual void generate_image() = 0;
 

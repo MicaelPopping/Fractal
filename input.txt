@@ -1,5 +1,5 @@
-1000   1000 1000  -2.0 2.0 -2.0  2.0 50 205 50 One
-imgW imgH maxN minR maxR minI maxI R   G   B  modelo
+1000   1000 1000  -2.0 2.0 -2.0  2.0 50 205 50
+imgW imgH maxN minR maxR minI maxI R   G   B
 
 
 

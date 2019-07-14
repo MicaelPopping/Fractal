@@ -13,7 +13,7 @@ using std::ifstream;
 /*************************************
  * Public
  * */
-Fractal::Fractal() {
+Fractal::Fractal(string fractal_model) {
 	
 	ifstream fin(input_file);
 
@@ -26,7 +26,6 @@ Fractal::Fractal() {
 	fin >> image_width >> image_height >> max_iterations;
 	fin >> min_real >> max_real >> min_imaginary >> max_imaginary;
 	fin >> color_r >> color_g >> color_b;
-	fin >> fractal_model; 
 
 	fin.close();
 

@@ -11,14 +11,14 @@ using std::ofstream;
 /*************************************
  * Public
  * */
-Mandelbrot::Mandelbrot() {
+Mandelbrot::Mandelbrot() 
+: Fractal("Mandelbrot") {
 
 }
 
 
 void Mandelbrot::generate_image() {
 
-    if(fractal_model == "Two") {
 		ofstream fout("Two.ppm");
 		fout << "P3" << endl; // Magic Number extensão ppm
 		fout << image_width << " " << image_height << endl;
@@ -41,6 +41,5 @@ void Mandelbrot::generate_image() {
 				fout << endl;
 		}
 				fout.close();
-				cout << "Terminado! " << fractal_model << " gerado com sucesso!" << endl;
-	}
+				cout << "Terminado! Mandelbrot gerado com sucesso!" << endl;
 }
