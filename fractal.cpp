@@ -44,31 +44,20 @@ Fractal::Fractal() {
 int Fractal::generate(int x, int y, double num_real, double num_imaginary) {
 	
 	int i;
-	int verify;
 	//int threads = atoi(argv[4]);
 	double cr = map_To_Real(x);
 	double ci = map_To_Imaginary(y);
 
 	//inicia vrify
-	
-	# pragma omp parallel num_threads (threads)  \
-		private (i)
-	
-	{
-	# pragma omp for 
 
-		for(i = 0; verify < max_iterations; i++) {
+
+		for(i = 0; (i < max_iterations) && ((cr * cr + ci * ci) < 4.0); i++) {
 
 			double temp = 2.0 * cr * ci;
 			cr = cr * cr - ci * ci + num_real;
 			ci = temp + num_imaginary;
-
-			if((cr * cr + ci * ci) < 4.0)
-				verify = i;
-			else
-				verify = max_iterations;
 		}
-	}	
+
 
 	return i;
 }

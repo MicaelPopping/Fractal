@@ -1,0 +1,12 @@
+1000   1000 1000  -2.0 2.0 -2.0  2.0 50 205 50 One
+imgW imgH maxN minR maxR minI maxI R   G   B  modelo
+
+
+
+/* Outros Modelos de Julia */
+
+NumberR = -0.8;
+NumberI = 0.156;
+
+NumberR = -0.835
+NumberI = -0.2321

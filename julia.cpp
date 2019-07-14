@@ -11,9 +11,8 @@ using std::ofstream;
 /*************************************
  * Public
  * */
-Julia::Julia() {
-
-}
+Julia::Julia() 
+: Fractal() { }
 
 
 void Julia::generate_image() {
