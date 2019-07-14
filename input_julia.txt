@@ -10,5 +10,3 @@ NumberI = 0.156;
 
 NumberR = -0.835
 NumberI = -0.2321
-
-50 205 50

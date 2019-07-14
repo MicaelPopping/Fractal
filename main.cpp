@@ -18,5 +18,7 @@ int main (int argc, char *argv[]) {
 
     fc->generate_image();
 
+    delete fc;
+
     return 0;
 }
