@@ -50,11 +50,15 @@ int Fractal::generate(int x, int y, double num_real, double num_imaginary) {
 
 	//inicia vrify
 
-
-	for(i = 0; (i < max_iterations) && ((cr * cr + ci * ci) < 4.0); i++) {
-		double temp = 2.0 * cr * ci;
-		cr = cr * cr - ci * ci + num_real;
-		ci = temp + num_imaginary;
+	# pragma omp parallel num_threads (threads)  \
+		private (i)
+	{
+		# pragma omp for	
+		for(i = 0; (i < max_iterations) && ((cr * cr + ci * ci) < 4.0); i++) {
+			double temp = 2.0 * cr * ci;
+			cr = cr * cr - ci * ci + num_real;
+			ci = temp + num_imaginary;
+		}
 	}
 
 
