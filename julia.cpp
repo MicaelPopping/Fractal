@@ -11,8 +11,8 @@ using std::ofstream;
 /*************************************
  * Public
  * */
-Julia::Julia(unsigned int threads) 
-: Fractal("input_julia.txt", threads) { }
+Julia::Julia(unsigned int threads, int max_iterations) 
+: Fractal("input_julia.txt", threads, max_iterations) { }
 
 
 void Julia::generate_image() {

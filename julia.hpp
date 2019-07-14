@@ -10,7 +10,7 @@ class Julia : public Fractal {
 private:
    
 public:
-    Julia(unsigned int threads);
+    Julia(unsigned int threads, int max_iterations);
    
    virtual void generate_image();
 };

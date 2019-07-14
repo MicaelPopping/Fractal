@@ -13,8 +13,8 @@ using std::ifstream;
 /*************************************
  * Public
  * */
-Fractal::Fractal(string input_file, unsigned int threads) 
-: input_file(input_file), threads(threads) {
+Fractal::Fractal(string input_file, unsigned int threads, int max_iterations) 
+: input_file(input_file), threads(threads), max_iterations(max_iterations) {
 	
 	ifstream fin(input_file);
 
@@ -24,7 +24,7 @@ Fractal::Fractal(string input_file, unsigned int threads)
 	}
 
 	//Manipulando a entrada de dados
-	fin >> image_width >> image_height >> max_iterations;
+	fin >> image_width >> image_height;
 	fin >> min_real >> max_real >> min_imaginary >> max_imaginary;
 	fin >> color_r >> color_g >> color_b;
 

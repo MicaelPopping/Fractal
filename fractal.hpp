@@ -23,7 +23,7 @@ protected:
     unsigned int threads;
 
 public:
-    Fractal(string input_file, unsigned int threads);
+    Fractal(string input_file, unsigned int threads, int max_iterations);
 
 	virtual void generate_image() = 0;
 

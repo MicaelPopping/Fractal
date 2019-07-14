@@ -10,7 +10,7 @@ class Mandelbrot : public Fractal {
 private:
  
 public:
-    Mandelbrot(unsigned int threads);
+    Mandelbrot(unsigned int threads, int max_iterations);
 
     virtual void generate_image();
 };
