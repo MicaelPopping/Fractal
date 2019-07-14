@@ -1,27 +1,35 @@
 #include <iostream>
+using std::cout;
+using std::cin;
+using std::endl;
 #include <fstream>
+using std::ifstream;
 #include <string>
 #include <cmath>
-#include "fractal.hpp"
 #include <omp.h>
 
-using namespace std;
+
+#include "fractal.hpp"
+
 
 Fractal::Fractal() {
 	
-	ifstream fin(ArquivoInput);
+	ifstream fin(input_file);
+
 	if(!fin) {
 		cout << "Não foi possível abrir o arquivo!" << endl;
 		cin.ignore();	
 	}
 
 	//Manipulando a entrada de dados
-	fin >> imageWidth >> imageHeight >> maxN;
-	fin >> minR >> maxR >> minI >> maxI;
-	fin >> ColorR >> ColorG >> ColorB;
-	fin >> fractalModel; 
+	fin >> image_width >> image_height >> max_iterations;
+	fin >> min_r >> max_r >> min_i >> max_i;
+	fin >> color_r >> color_g >> color_b;
+	fin >> fractal_model; 
+
 	fin.close();
-	if(ColorR >= 257 || ColorG >= 257 || ColorB >= 257 || ColorR < 1 || ColorG < 1 || ColorB < 1 ) {
+
+	if(color_r >= 257 || color_g >= 257 || color_b >= 257 || color_r < 1 || color_g < 1 || color_b < 1 ) {
 		cout << "Valor max/min de RBG ultrapassado, entre com números >= 0 || <= 256" << endl;
 		cin.ignore();
 		EXIT_FAILURE;
